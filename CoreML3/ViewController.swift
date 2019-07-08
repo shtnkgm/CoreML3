@@ -10,9 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    private let captureSession = CaptureSession()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        guard let previewLayer = captureSession.start() else { return }
+        previewLayer.frame = view.bounds
+        view.layer.insertSublayer(previewLayer, at: 0)
     }
 
 
